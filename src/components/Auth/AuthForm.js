@@ -25,7 +25,7 @@ const AuthForm = () => {
     signInWithPopup(auth, provider).then(res => {
       const GoogleUser = res.user
       setIsFederated(true)
-      history.replace('/')
+      history.replace('/contacts')
     })
   }
 
