@@ -14,9 +14,9 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
-      <Link to="/">
+      <div>
         <div className={classes.logo}>Contact App</div>
-      </Link>
+      </div>
       <nav>
         <ul>
           {!isLoggedIn && (
@@ -26,19 +26,24 @@ const MainNavigation = () => {
           )}
           {isLoggedIn || isFederated ? (
             <li>
+              <Link to="/contacts">All Contacts</Link>
+            </li>
+          ): ''}
+          {isLoggedIn || isFederated ? (
+            <li>
               <Link to="/profile">Profile</Link>
             </li>
           ): ''}
           {isLoggedIn || isFederated ?  (
             <li>
-              <NavLink to="/" activeClassName={classes.active}>
+              <NavLink to="/update/:id" activeClassName={classes.active}>
                 About
               </NavLink>
             </li>
           ) : ''}
           {isLoggedIn || isFederated  ? (
             <li>
-              <NavLink to="/" activeClassName={classes.active}>
+              <NavLink to="/add" activeClassName={classes.active}>
                 Add Contact
               </NavLink>
             </li>
