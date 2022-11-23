@@ -50,7 +50,7 @@ const MainNavigation = () => {
           ) : ''}
           {isLoggedIn || isFederated ? (
             <li>
-              <button onClick={loginOutHandler}>Logout</button>
+              <Link to="/auth" onClick={loginOutHandler}>Logout</Link>
             </li>
           ) : ''}
         </ul>
