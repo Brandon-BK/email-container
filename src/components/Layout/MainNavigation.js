@@ -14,8 +14,9 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
-      <div>
-        <div className={classes.logo}>Contact App</div>
+      <div style={{display:'flex', alignItems:'center'}}>
+        <img src="../phone.png" alt="logo" height='auto' width='60px' />
+        <div className={classes.logo}>Contact <span style={{color:'black', fontSize:'1.3rem'}}>App</span></div>
       </div>
       <nav>
         <ul>
