@@ -3,6 +3,8 @@ import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
 import classes from "./AuthForm.module.css";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 const AuthForm = () => {
   const history = useHistory();
@@ -116,7 +118,7 @@ const AuthForm = () => {
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {isLoading && <p>Sending Your Request.....</p>}
+          {isLoading && <ClipLoader />}
           <button
             type="button"
             className={classes.toggle}

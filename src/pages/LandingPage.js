@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Landing.css";
 import Alert from "@mui/material/Alert";
 
+
 const Landing = () => {
   const [data, setData] = useState({});
   useEffect(() => {

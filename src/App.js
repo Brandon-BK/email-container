@@ -13,6 +13,7 @@ import View from "./pages/View"
 
 function App() {
   const authCtx = useContext(AuthContext);
+  
 
   return (
     <Layout>

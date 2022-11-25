@@ -4,6 +4,8 @@ import "./AddEdit.css";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import fireDb from "../firebase";
+import LoadingSpinner from "../components/Animation/LoadingSpinner";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const initialState = {
   name: "",
@@ -14,6 +16,7 @@ const initialState = {
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const { name, email, contact } = state;
 
@@ -50,6 +53,7 @@ const AddEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email || !contact) {
+      setIsLoading(false);
       alert("Please provide values in each input field");
     } else {
       if (!id) {
@@ -75,6 +79,7 @@ const AddEdit = () => {
 
   return (
     <div style={{ marginTop: "100px" }}>
+     
       <form
         style={{
           margin: "auto",

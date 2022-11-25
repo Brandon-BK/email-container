@@ -1,16 +1,18 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import classes from "./ProfileForm.module.css";
 import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
+import LoadingSpinner from "../Animation/LoadingSpinner";
 
 const ProfileForm = () => {
   const history = useHistory()
   const newPasswordInputRef = useRef();
   const authCtx = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submiitHandler = (e) => {
     e.preventDefault();
-
+    
     const newEnteredPassword = newPasswordInputRef.current.value;
 
     fetch(
@@ -41,7 +43,9 @@ const ProfileForm = () => {
         <input type="password" minLength="7" id="new-password" ref={newPasswordInputRef} />
       </div>
       <div className={classes.action}>
-        <button>Change Password</button>
+        {/* <button>Change Password</button> */}
+        {isLoading ? LoadingSpinner: <button>Change Password</button>}
+
       </div>
     </form>
   );
