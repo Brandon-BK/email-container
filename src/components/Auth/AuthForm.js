@@ -2,17 +2,17 @@ import { useState, useRef, useContext } from "react";
 import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
 import classes from "./AuthForm.module.css";
-import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth'
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 const AuthForm = () => {
   const history = useHistory();
   const emailInputRef = useRef();
 
   const passwordInputRef = useRef();
-  const provider = new GoogleAuthProvider()
+  const provider = new GoogleAuthProvider();
 
   const authCtx = useContext(AuthContext);
-  const {isFederated, setIsFederated} = useContext(AuthContext);
+  const { isFederated, setIsFederated } = useContext(AuthContext);
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,16 +20,14 @@ const AuthForm = () => {
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
-  const handleGoogle = ()=>{
-    const auth = getAuth()
-    signInWithPopup(auth, provider).then(res => {
-      const GoogleUser = res.user
-      setIsFederated(true)
-      history.replace('/contacts')
-    })
-  }
-
-
+  const handleGoogle = () => {
+    const auth = getAuth();
+    signInWithPopup(auth, provider).then((res) => {
+      const GoogleUser = res.user;
+      setIsFederated(true);
+      history.replace("/contacts");
+    });
+  };
 
   const submiitHandler = (event) => {
     event.preventDefault();
@@ -100,23 +98,19 @@ const AuthForm = () => {
           />
         </div>
 
-        
-         
-            <button
-            onClick={handleGoogle}
-              style={{
-                border: "none",
-                outLine: "none",
-                padding: "10px",
-                cursor: "pointer",
-                borderRadius: 8,
-                marginTop: 13,
-              }}
-            >
-              Google sign in
-            </button>
-         
-        
+        <button
+          onClick={handleGoogle}
+          style={{
+            border: "none",
+            outLine: "none",
+            padding: "10px",
+            cursor: "pointer",
+            borderRadius: 8,
+            marginTop: 13,
+          }}
+        >
+          Google sign in
+        </button>
 
         <div className={classes.actions}>
           {!isLoading && (

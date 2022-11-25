@@ -4,7 +4,7 @@ const StartingPageContent = () => {
   return (
     <section className={classes.starting}>
       <h1>Welcome on Board!</h1>
-      <p>Please create an account or login so that you could start creating user contacts</p>
+      <p>Lets start creating some contacts</p>
     </section>
   );
 };
