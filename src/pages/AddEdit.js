@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import "./AddEdit.css";
 import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 import fireDb from "../firebase";
 
 const initialState = {
@@ -18,8 +19,7 @@ const AddEdit = () => {
 
   const history = useHistory();
 
-  const {id} = useParams()
-
+  const { id } = useParams();
 
   useEffect(() => {
     fireDb.child("contacts").on("value", (snapshot) => {
@@ -34,14 +34,13 @@ const AddEdit = () => {
     };
   }, [id]);
 
-
   useEffect(() => {
-    if(id){
-      setData({...data[id]})
-    }else{
-      setData({...initialState})
+    if (id) {
+      setData({ ...data[id] });
+    } else {
+      setData({ ...initialState });
     }
-  }, [id,data])
+  }, [id, data]);
 
   const handleInputCgange = (e) => {
     e.preventDefault();
@@ -53,19 +52,19 @@ const AddEdit = () => {
     if (!name || !email || !contact) {
       alert("Please provide values in each input field");
     } else {
-      if(!id){
+      if (!id) {
         fireDb.child("contacts").push(state, (err) => {
           if (err) {
             alert(err);
-          }else {
+          } else {
             alert("Contact Added Successfully");
           }
         });
-      }else{
+      } else {
         fireDb.child(`contacts/${id}`).set(state, (err) => {
           if (err) {
             alert(err);
-          }else {
+          } else {
             alert("Contact Updated Successfully");
           }
         });
@@ -74,7 +73,6 @@ const AddEdit = () => {
     }
   };
 
-  
   return (
     <div style={{ marginTop: "100px" }}>
       <form
