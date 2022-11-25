@@ -11,9 +11,9 @@
 
 .logo {
   font-family: 'Lato', sans-serif;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #4284f5;
-  margin: 0;
+  margin-left: 15px;
 }
 
 .header ul {
