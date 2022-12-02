@@ -35,13 +35,6 @@ const MainNavigation = () => {
               <Link to="/profile">Profile</Link>
             </li>
           ): ''}
-          {/* {isLoggedIn || isFederated ?  (
-            <li>
-              <NavLink to="/update/:id" activeClassName={classes.active}>
-                About
-              </NavLink>
-            </li>
-          ) : ''} */}
           {isLoggedIn || isFederated  ? (
             <li>
               <NavLink to="/add" activeClassName={classes.active}>

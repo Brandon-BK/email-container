@@ -5,7 +5,6 @@ import classes from "./AuthForm.module.css";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import ClipLoader from "react-spinners/ClipLoader";
 
-
 const AuthForm = () => {
   const history = useHistory();
   const emailInputRef = useRef();
@@ -84,11 +83,17 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+      <h1>{isLogin ? "Login Form" : "Sign Up"}</h1>
       <form onSubmit={submiitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">User Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter Email"
+            required
+            ref={emailInputRef}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">User Password</label>
@@ -96,29 +101,28 @@ const AuthForm = () => {
             type="password"
             id="password"
             required
+            placeholder="Enter Password"
             ref={passwordInputRef}
           />
         </div>
 
-        <button
-          onClick={handleGoogle}
-          style={{
-            border: "none",
-            outLine: "none",
-            padding: "10px",
-            cursor: "pointer",
-            borderRadius: 8,
-            marginTop: 13,
-          }}
-        >
-          Google sign in
-        </button>
-
         <div className={classes.actions}>
-          {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
-          )}
+          <button id="loginBtn">Login</button>
+
           {isLoading && <ClipLoader />}
+          <button
+            onClick={handleGoogle}
+            style={{
+              border: "none",
+              outLine: "none",
+              padding: "10px",
+              cursor: "pointer",
+              borderRadius: 8,
+              marginTop: 13,
+            }}
+          >
+            Google sign in
+          </button>
           <button
             type="button"
             className={classes.toggle}

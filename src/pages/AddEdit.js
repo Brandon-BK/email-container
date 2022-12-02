@@ -24,6 +24,7 @@ const AddEdit = () => {
 
   const { id } = useParams();
 
+  
   useEffect(() => {
     fireDb.child("contacts").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -110,7 +111,7 @@ const AddEdit = () => {
           onChange={handleInputCgange}
           required
         />
-        <label htmlFor="contact">Name</label>
+        <label htmlFor="contact">Number</label>
         <input
           type="number"
           id="contact"
